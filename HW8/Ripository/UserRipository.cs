@@ -15,7 +15,7 @@ namespace HW8
             return Database.users;
         }
 
-        public User Login(string username, string password)
+        public User? Login(string username, string password)
         {
             var user = GetUsers().FirstOrDefault(x=> (x.Natnalcode == username && x.PhoneNumber==password));
             if (user != null)
