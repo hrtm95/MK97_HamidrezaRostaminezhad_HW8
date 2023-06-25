@@ -28,7 +28,7 @@ namespace HW8.Controllers
             var user = _userRipository.Login(username, password);
             if (user != null) 
             {
-                return View("Privacy");
+                return View("Privacy", user);
             }
             return View("Login");
         }
@@ -37,9 +37,13 @@ namespace HW8.Controllers
         {
             return View();
         }
+        public IActionResult ShowTurnover ()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(int id)
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
