@@ -6,8 +6,6 @@ namespace HW8.Ripository
     {
         List<User> GetUsers();
         User GetUserByEmail(string email);
-        bool Login(string username, string password);
-=======
         User Login(string username, string password);
         
 

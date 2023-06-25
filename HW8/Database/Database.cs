@@ -12,5 +12,9 @@ namespace HW8
             new User(){Id = 4 ,Name = "jafar",LastName = "gholami",PhoneNumber = "4",Natnalcode = "4" },
             new User(){Id = 5 ,Name = "akbar",LastName = "bagheri",PhoneNumber = "5",Natnalcode = "5"  }
         };
+        public static List<Turnover> Turnovers = new List<Turnover>()
+        {
+            new Turnover(){Id = 1 ,Name ="tejarat" , Credit = 1000 }
+        };
     }
 }
