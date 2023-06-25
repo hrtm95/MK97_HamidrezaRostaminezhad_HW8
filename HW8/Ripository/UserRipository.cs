@@ -15,12 +15,12 @@ namespace HW8
             return Database.users;
         }
 
-        public bool Login(string username, string password)
+        public User Login(string username, string password)
         {
-            var users = GetUsers().FirstOrDefault(x=> x.Natnalcode == username && x.Mobile=password);
-            if (users != null)
-                return true;
-            return false;
+            var user = GetUsers().FirstOrDefault(x=> (x.Natnalcode == username && x.PhoneNumber==password));
+            if (user != null)
+                return user;
+            return null;
         }
     }
 }
