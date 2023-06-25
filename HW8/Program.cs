@@ -1,7 +1,11 @@
+using HW8;
+using HW8.Ripository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IUserRipository, UserRipository>();
 
 var app = builder.Build();
 

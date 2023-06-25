@@ -1,4 +1,5 @@
 ﻿using HW8.Models;
+using HW8.Ripository;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -8,9 +9,12 @@ namespace HW8.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IUserRipository _userRipository;
+
+        public HomeController(ILogger<HomeController> logger, IUserRipository userRipository)
         {
             _logger = logger;
+            _userRipository = userRipository;
         }
 
         public IActionResult Index()
