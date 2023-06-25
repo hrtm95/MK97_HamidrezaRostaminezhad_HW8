@@ -17,9 +17,20 @@ namespace HW8.Controllers
             _userRipository = userRipository;
         }
 
+        public ActionResult Index()
+        {
+            return View("Login");
+        }
+
+        [HttpPost]
         public IActionResult Login(string username,string password)
         {
-            return View();
+            var user = _userRipository.Login(username, password);
+            if (user != null) 
+            {
+                return View("Privacy");
+            }
+            return View("Login");
         }
 
         public IActionResult Privacy()
