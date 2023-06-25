@@ -17,7 +17,7 @@ namespace HW8.Controllers
             _userRipository = userRipository;
         }
 
-        public IActionResult Login()
+        public IActionResult Login(string username,string password)
         {
             return View();
         }
