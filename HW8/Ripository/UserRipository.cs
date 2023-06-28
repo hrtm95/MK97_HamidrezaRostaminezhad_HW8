@@ -5,9 +5,12 @@ namespace HW8
 {
     public class UserRipository : IUserRipository
     {
-        public User GetUserByEmail(string email)
+        public User GetUserById(int id)
         {
-            throw new NotImplementedException();
+            var user = GetUsers().FirstOrDefault(x => (x.Id == id));
+            if (user != null)
+                return user;
+            return null;
         }
 
         public List<User> GetUsers()
@@ -22,5 +25,6 @@ namespace HW8
                 return user;
             return null;
         }
+
     }
 }

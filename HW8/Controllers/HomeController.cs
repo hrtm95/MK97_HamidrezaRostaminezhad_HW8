@@ -10,11 +10,13 @@ namespace HW8.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private readonly IUserRipository _userRipository;
+        private readonly ITurnoverRiposytory _turnoverRiposytory;
 
-        public HomeController(ILogger<HomeController> logger, IUserRipository userRipository)
+        public HomeController(ILogger<HomeController> logger, IUserRipository userRipository, ITurnoverRiposytory turnoverRiposytory)
         {
             _logger = logger;
             _userRipository = userRipository;
+            _turnoverRiposytory = turnoverRiposytory;
         }
 
         public ActionResult Index()
@@ -28,20 +30,47 @@ namespace HW8.Controllers
             var user = _userRipository.Login(username, password);
             if (user != null) 
             {
-                return View("Privacy");
+                return View("Profile", user);
             }
             return View("Login");
         }
 
-        public IActionResult Privacy()
+        public IActionResult Profile()
         {
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(int id)
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult ShowTurnover(int id)
+        {
+            var turnover = _turnoverRiposytory.Turnovers(id);
+            if (turnover != null)
+                return View(turnover);
+            var user = _userRipository.GetUserById(id);
+            return View("Profile", user);
+
+        }
+        public IActionResult AccountDeposit(int id)
+        {
+            return View(id);
+        }
+
+        [HttpPost]
+            public IActionResult AccountDeposit (Turnover turnover)
+        {
+            int userid = turnover.userId;
+            var Deposit = _turnoverRiposytory.AddTurnover(turnover);
+            if (Deposit)
+                return RedirectToAction("ShowTurnover", userid);
+            var user = _userRipository.GetUserById(turnover.userId);
+            return View("Profile", user);
+        }
+
+
     }
 }

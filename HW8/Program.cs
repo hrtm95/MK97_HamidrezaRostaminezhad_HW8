@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUserRipository, UserRipository>();
+builder.Services.AddScoped<ITurnoverRiposytory, TurnoverRiposytor>();
 
 var app = builder.Build();
 
