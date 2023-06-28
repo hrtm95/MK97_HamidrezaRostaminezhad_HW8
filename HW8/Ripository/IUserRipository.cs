@@ -7,8 +7,5 @@ namespace HW8.Ripository
         List<User> GetUsers();
         User GetUserById(int id);
         User Login(string username, string password);
-        
-
-
     }
 }

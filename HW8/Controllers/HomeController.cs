@@ -46,7 +46,7 @@ namespace HW8.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult ShowTurnover(int id)
+        public ActionResult ShowTurnover(int id)
         {
             var turnover = _turnoverRiposytory.Turnovers(id);
             if (turnover != null)
@@ -66,7 +66,7 @@ namespace HW8.Controllers
             int userid = turnover.userId;
             var Deposit = _turnoverRiposytory.AddTurnover(turnover);
             if (Deposit)
-                return RedirectToAction("ShowTurnover", userid);
+                return RedirectToAction("ShowTurnover", new { id = userid });
             var user = _userRipository.GetUserById(turnover.userId);
             return View("Profile", user);
         }
