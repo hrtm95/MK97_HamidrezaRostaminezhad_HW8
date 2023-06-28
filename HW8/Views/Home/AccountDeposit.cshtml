@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "برداشت - واریز به حساب";
+}
+@model int;
+<p>برداشت - واریز به حساب</p>
+<form method="post" asp-controller="Home" asp-action="AccountDeposit">
+    <input type="hidden" name="userId" value="@Model" />
+    <input name="Name" type="text" />
+    <input name="Debit" type="number" />
+    <textarea name="Description"></textarea>
+    <input type="hidden" name="Credit" value="0" />
+    <button class="btn btn-info" type="submit">ثبت برداشت</button>
+</form>
+<form method="post" asp-controller="Home" asp-action="AccountDeposit">
+    <input type="hidden" name="userId" value="@Model"/>
+    <input type="hidden" name="Debit" value="0" />
+    <input name="Name" type="text" />
+    <input name="Credit" type="number" />
+    <textarea name="Description"></textarea>
+    <button class="btn btn-info" type="submit">ثبت واریز</button>
+</form>

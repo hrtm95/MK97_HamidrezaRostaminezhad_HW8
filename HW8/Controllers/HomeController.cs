@@ -55,6 +55,21 @@ namespace HW8.Controllers
             return View("Profile", user);
 
         }
+        public IActionResult AccountDeposit(int id)
+        {
+            return View(id);
+        }
+
+        [HttpPost]
+            public IActionResult AccountDeposit (Turnover turnover)
+        {
+            int userid = turnover.userId;
+            var Deposit = _turnoverRiposytory.AddTurnover(turnover);
+            if (Deposit)
+                return RedirectToAction("ShowTurnover", userid);
+            var user = _userRipository.GetUserById(turnover.userId);
+            return View("Profile", user);
+        }
 
 
     }

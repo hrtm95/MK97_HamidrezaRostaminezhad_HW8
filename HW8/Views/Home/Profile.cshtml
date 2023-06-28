@@ -5,5 +5,6 @@
 <h1>@ViewData["Title"]</h1>
 <input type="hidden" value="@Model.Id" />
 <p>Use this page to detail your site's privacy policy.@Model.Id - @Model.Name</p>
-<a asp-controller="Home" asp-action="ShowTurnover" asp-route-id="@Model.Id">ShowTurnover</a>
+<a asp-controller="Home" asp-action="ShowTurnover" asp-route-id="@Model.Id">لیست گردش حساب</a>
+<a asp-controller = "Home" asp-action = "AccountDeposit" asp-route-id="@Model.Id">برداشت - واریز به حساب</a>
 <p>hi</p>

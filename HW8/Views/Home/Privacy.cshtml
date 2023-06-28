@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "Profile";
+}
+@model HW8.Models.User
+<h1>@ViewData["Title"]</h1>
+<input type="hidden" value="@Model.Id" />
+<p>Use this page to detail your site's privacy policy.@Model.Id - @Model.Name</p>
+<a asp-controller="Home" asp-action="ShowTurnover" asp-route-id="@Model.Id">ShowTurnover</a>
+<p>hi</p>
