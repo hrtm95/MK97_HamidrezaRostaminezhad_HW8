@@ -47,8 +47,8 @@ namespace HW8.Ripository
                 double tempRemaining = 0;
                 foreach (var turnover in Turnovers)
                 {
-                    tempRemaining =+ turnover.Credit;
-                    tempRemaining =- turnover.Debit;
+                    tempRemaining += turnover.Credit;
+                    tempRemaining -= turnover.Debit;
                 }
                 return tempRemaining;
             }

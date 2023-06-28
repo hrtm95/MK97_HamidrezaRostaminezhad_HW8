@@ -30,6 +30,8 @@ namespace HW8.Controllers
             var user = _userRipository.Login(username, password);
             if (user != null) 
             {
+                var remaining =  _turnoverRiposytory.remaining(user.Id);
+                ViewBag.Remaining = remaining;
                 return View("Profile", user);
             }
             return View("Login");
@@ -71,6 +73,12 @@ namespace HW8.Controllers
             return View("Profile", user);
         }
 
-
+        public IActionResult Remaining(int id)
+        {
+            var user = _userRipository.GetUserById(id);
+            var remaining = _turnoverRiposytory.remaining(user.Id);
+            ViewBag.Remaining = remaining;
+            return View("Profile", user);
+        }
     }
 }
