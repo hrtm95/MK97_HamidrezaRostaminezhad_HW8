@@ -10,11 +10,13 @@ namespace HW8.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private readonly IUserRipository _userRipository;
+        private readonly ITurnoverRiposytory _turnoverRiposytory;
 
-        public HomeController(ILogger<HomeController> logger, IUserRipository userRipository)
+        public HomeController(ILogger<HomeController> logger, IUserRipository userRipository, ITurnoverRiposytory turnoverRiposytory)
         {
             _logger = logger;
             _userRipository = userRipository;
+            _turnoverRiposytory = turnoverRiposytory;
         }
 
         public ActionResult Index()
@@ -28,16 +30,12 @@ namespace HW8.Controllers
             var user = _userRipository.Login(username, password);
             if (user != null) 
             {
-                return View("Privacy", user);
+                return View("Profile", user);
             }
             return View("Login");
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-        public IActionResult ShowTurnover ()
+        public IActionResult Profile()
         {
             return View();
         }
@@ -47,5 +45,17 @@ namespace HW8.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult ShowTurnover(int id)
+        {
+            var turnover = _turnoverRiposytory.Turnovers(id);
+            if (turnover != null)
+                return View(turnover);
+            var user = _userRipository.GetUserById(id);
+            return View("Profile", user);
+
+        }
+
+
     }
 }

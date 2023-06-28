@@ -5,7 +5,7 @@ namespace HW8.Ripository
     public interface IUserRipository
     {
         List<User> GetUsers();
-        User GetUserByEmail(string email);
+        User GetUserById(int id);
         User Login(string username, string password);
         
 
